@@ -1,3 +1,3 @@
 # tax_calculator_project
 Nádra Balázs, Simon Ádám, Vass István Tas
-#HUNGARIAN #TAX #CALCULATOR
+# HUNGARIAN TAX CALCULATOR
