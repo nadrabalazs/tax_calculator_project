@@ -28,6 +28,49 @@
                 <input type="number" id="grossAmount" placeholder="Pl. 450000" value="450000">
             </div>
         </div>
+
+        <div class="section-title">Adókedvezmények</div>
+        <div class="checkbox-grid">
+            <label class="checkbox-label">
+                <input type="checkbox" id="under25">
+                <span>25 év alatti fiatalok kedvezménye</span>
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" id="under30mother">
+                <span>30 év alatti anyák kedvezménye</span>
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" id="firstMarriage">
+                <span>Első házasok kedvezménye (5.000 Ft/hó)</span>
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" id="personalDiscount">
+                <span>Személyi kedvezmény (Súlyos fogyatékosság)</span>
+            </label>
+        </div>
+
+        <div class="family-box">
+            <label class="checkbox-label">
+                <input type="checkbox" id="familyDiscount">
+                <strong>Családi adókedvezmény igénybevétele</strong>
+            </label>
+            
+            <div id="familyDetails" class="family-details" style="display: none;">
+                <div class="form-group">
+                    <label for="dependents">Eltartottak száma (gyermekek):</label>
+                    <input type="number" id="dependents" value="1" min="1" max="10">
+                </div>
+                <div class="form-group">
+                    <label for="beneficiaries">Ebből kedvezményezett eltartott:</label>
+                    <input type="number" id="beneficiaries" value="1" min="1" max="10">
+                </div>
+            </div>
+        </div>
+
+        <button id="calcBtn">Adók kiszámítása</button>
     </div>
 
     <script src="script.js"></script>
