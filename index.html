@@ -71,6 +71,40 @@
         </div>
 
         <button id="calcBtn">Adók kiszámítása</button>
+
+        <div class="results-container" id="resultsContainer" style="display: none;">
+            <div class="results-grid">
+                <div class="table-wrapper">
+                    <h3>Részletes bontás</h3>
+                    <table>
+                        <tr>
+                            <td>Bruttó jövedelem:</td>
+                            <td class="amount" id="resGross">0 Ft</td>
+                        </tr>
+                        <tr>
+                            <td>Számított SZJA (15%):</td>
+                            <td class="amount" id="resGrossSzja">0 Ft</td>
+                        </tr>
+                        <tr class="discount-row">
+                            <td>Érvényesített SZJA kedvezmény:</td>
+                            <td class="amount text-green" id="resSzjaDiscount">-0 Ft</td>
+                        </tr>
+                        <tr>
+                            <td>Fizetendő SZJA:</td>
+                            <td class="amount" id="resFinalSzja">0 Ft</td>
+                        </tr>
+                        <tr>
+                            <td>TB járulék (18.5%):</td>
+                            <td class="amount" id="resTb">0 Ft</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Nettó kézhez kapott bér:</strong></td>
+                            <td class="amount text-netto" id="resNetto"><strong>0 Ft</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
