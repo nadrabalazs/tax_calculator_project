@@ -26,4 +26,27 @@ function calculateTax() {
         grossAmount = 0;
         document.getElementById('grossAmount').value = 0;
     }
+    
+    const under25 = document.getElementById('under25').checked;
+    const under30mother = document.getElementById('under30mother').checked;
+    const firstMarriage = document.getElementById('firstMarriage').checked;
+    const personalDiscount = document.getElementById('personalDiscount').checked;
+    const familyDiscount = document.getElementById('familyDiscount').checked;
+
+    let dependents = parseInt(document.getElementById('dependents').value) || 0;
+    let beneficiaries = parseInt(document.getElementById('beneficiaries').value) || 0;
+
+    if (dependents < 0) dependents = 0;
+    if (beneficiaries < 0) beneficiaries = 0;
+
+    // 2. Adóalap és alap SZJA (15%) meghatározása
+    let taxBase = grossAmount;
+    
+    // Megbízási díjnál 90% a vélelmezett adóalap (10% költséghányad)
+    if (incomeType === 'megbizas') {
+        taxBase = grossAmount * 0.90;
+    }
+
+    let calculatedSzja = taxBase * 0.15;
+    let szjaDiscount = 0;
 }
