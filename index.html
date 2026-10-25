@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magyar Adókalkulátor</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -102,6 +103,13 @@
                             <td class="amount text-netto" id="resNetto"><strong>0 Ft</strong></td>
                         </tr>
                     </table>
+                </div>
+
+                <div class="chart-wrapper">
+                    <h3>Jövedelem eloszlása</h3>
+                    <div class="chart-box">
+                        <canvas id="taxChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
