@@ -49,4 +49,16 @@ function calculateTax() {
 
     let calculatedSzja = taxBase * 0.15;
     let szjaDiscount = 0;
+
+    // 3. Valós adókedvezmények kiszámítása (egymástól függetlenül összeadódhatnak)
+
+    // A) 25 év alattiak VAGY 30 év alatti anyák kedvezménye (SZJA mentesség)
+    if (under25 || under30mother) {
+        szjaDiscount += calculatedSzja;
+    }
+
+    // B) Első házasok kedvezménye (havi fix 5 000 Ft adókedvezmény)
+    if (firstMarriage) {
+        szjaDiscount += 5000;
+    }
 }
