@@ -61,4 +61,22 @@ function calculateTax() {
     if (firstMarriage) {
         szjaDiscount += 5000;
     }
+
+    // C) Személyi kedvezmény (súlyos fogyatékosság esetén, kb. 23 200 Ft/hó)
+    if (personalDiscount) {
+        szjaDiscount += 23200; 
+    }
+
+    // D) Családi adókedvezmény (gyermekszámtól függő adóalap-csökkentés)
+    if (familyDiscount && beneficiaries > 0) {
+        let familyTaxBaseDiscount = 0;
+        if (beneficiaries === 1) {
+            familyTaxBaseDiscount = 66670; // ~10 000 Ft adókedvezmény
+        } else if (beneficiaries === 2) {
+            familyTaxBaseDiscount = 133330 * beneficiaries; // ~20 000 Ft / gyerek
+        } else if (beneficiaries >= 3) {
+            familyTaxBaseDiscount = 220000 * beneficiaries; // ~33 000 Ft / gyerek
+        }
+        szjaDiscount += familyTaxBaseDiscount * 0.15;
+    }
 }
