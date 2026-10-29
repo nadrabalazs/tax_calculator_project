@@ -79,4 +79,23 @@ function calculateTax() {
         }
         szjaDiscount += familyTaxBaseDiscount * 0.15;
     }
+
+    // A kedvezmény nem lehet több, mint a számított SZJA (negatív SZJA nincs)
+    if (szjaDiscount > calculatedSzja) {
+        szjaDiscount = calculatedSzja;
+    }
+
+    // Végleges fizetendő SZJA
+    let finalSzja = calculatedSzja - szjaDiscount;
+
+    // 4. TB Járulék (18.5% - Munkabérnél és megbízásnál)
+    let tb = 0;
+    if (incomeType === 'munkaber') {
+        tb = grossAmount * 0.185;
+    } else if (incomeType === 'megbizas') {
+        tb = taxBase * 0.185;
+    }
+
+    // 5. Nettó bér
+    let netto = grossAmount - finalSzja - tb;
 }
