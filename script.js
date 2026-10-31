@@ -98,4 +98,19 @@ function calculateTax() {
 
     // 5. Nettó bér
     let netto = grossAmount - finalSzja - tb;
+
+    // 6. Eredmények kiíratása
+    document.getElementById('resGross').innerText = formatFt(grossAmount);
+    document.getElementById('resGrossSzja').innerText = formatFt(calculatedSzja);
+    document.getElementById('resSzjaDiscount').innerText = "-" + formatFt(szjaDiscount);
+    document.getElementById('resFinalSzja').innerText = formatFt(finalSzja);
+    document.getElementById('resTb').innerText = formatFt(tb);
+    document.getElementById('resNetto').innerText = formatFt(netto);
+
+    document.getElementById('resultsContainer').style.display = 'block';
+}
+
+// Segédfüggvény a forint formázásához
+function formatFt(amount) {
+    return Math.round(amount).toLocaleString('hu-HU') + " Ft";
 }
