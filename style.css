@@ -133,3 +133,54 @@ button {
 button:hover {
     background-color: #219150;
 }
+
+.results-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #ecf0f1;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+@media (max-width: 650px) {
+    .results-grid { grid-template-columns: 1fr; }
+}
+
+.table-wrapper h3, .chart-wrapper h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #2c3e50;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.amount {
+    text-align: right;
+    font-weight: 600;
+}
+
+.text-green { color: #27ae60; }
+.text-netto { color: #2ecc71; font-size: 16px; }
+
+.discount-row td { color: #7f8c8d; font-size: 13px; }
+.highlight-row td { border-top: 2px solid #27ae60; border-bottom: none; padding-top: 10px; }
+
+.chart-box {
+    position: relative;
+    max-width: 250px;
+    margin: 0 auto;
+}
