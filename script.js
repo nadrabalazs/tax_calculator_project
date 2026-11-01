@@ -108,9 +108,38 @@ function calculateTax() {
     document.getElementById('resNetto').innerText = formatFt(netto);
 
     document.getElementById('resultsContainer').style.display = 'block';
+
+    // 7. Chart.js Diagram frissítése
+    updateChart(netto, finalSzja, tb);
 }
 
 // Segédfüggvény a forint formázásához
 function formatFt(amount) {
     return Math.round(amount).toLocaleString('hu-HU') + " Ft";
+}
+
+// Diagram megrajzolása / frissítése
+function updateChart(netto, szja, tb) {
+    const ctx = document.getElementById('taxChart').getContext('2d');
+
+    if (myChart) {
+        myChart.destroy(); // Régi chart törlése újrarajzolás előtt
+    }
+
+    myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Nettó bér', 'SZJA', 'TB járulék'],
+            datasets: [{
+                data: [netto, szja, tb],
+                backgroundColor: ['#2ecc71', '#e74c3c', '#e67e22']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
 }
