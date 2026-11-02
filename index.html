@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magyar Adókalkulátor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Magyar Adókalkulátor</h1>
+        <p class="subtitle">Diákprojekt - Összetett adószámítás és kedvezmények</p>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="incomeType">Jövedelem típusa:</label>
+                <select id="incomeType">
+                    <option value="munkaber">Munkabér (Munkaviszony)</option>
+                    <option value="megbizas">Megbízási díj (Önálló tevékenység)</option>
+                    <option value="berbeadas">Ingatlan bérbeadás</option>
+                    <option value="egyeb">Egyéb jövedelem</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="grossAmount">Bruttó jövedelem (Ft / hónap):</label>
+                <input type="number" id="grossAmount" placeholder="Pl. 450000" value="450000">
+            </div>
+        </div>
+
+        <div class="section-title">Adókedvezmények</div>
+        <div class="checkbox-grid">
+            <label class="checkbox-label">
+                <input type="checkbox" id="under25">
+                <span>25 év alatti fiatalok kedvezménye</span>
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" id="under30mother">
+                <span>30 év alatti anyák kedvezménye</span>
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" id="firstMarriage">
+                <span>Első házasok kedvezménye (5.000 Ft/hó)</span>
+            </label>
+
+            <label class="checkbox-label">
+                <input type="checkbox" id="personalDiscount">
+                <span>Személyi kedvezmény (Súlyos fogyatékosság)</span>
+            </label>
+        </div>
+
+        <div class="family-box">
+            <label class="checkbox-label">
+                <input type="checkbox" id="familyDiscount">
+                <strong>Családi adókedvezmény igénybevétele</strong>
+            </label>
+            
+            <div id="familyDetails" class="family-details" style="display: none;">
+                <div class="form-group">
+                    <label for="dependents">Eltartottak száma (gyermekek):</label>
+                    <input type="number" id="dependents" value="1" min="1" max="10">
+                </div>
+                <div class="form-group">
+                    <label for="beneficiaries">Ebből kedvezményezett eltartott:</label>
+                    <input type="number" id="beneficiaries" value="1" min="1" max="10">
+                </div>
+            </div>
+        </div>
+
+        <button id="calcBtn">Adók kiszámítása</button>
+
+        <div class="results-container" id="resultsContainer" style="display: none;">
+            <div class="results-grid">
+                <div class="table-wrapper">
+                    <h3>Részletes bontás</h3>
+                    <table>
+                        <tr>
+                            <td>Bruttó jövedelem:</td>
+                            <td class="amount" id="resGross">0 Ft</td>
+                        </tr>
+                        <tr>
+                            <td>Számított SZJA (15%):</td>
+                            <td class="amount" id="resGrossSzja">0 Ft</td>
+                        </tr>
+                        <tr class="discount-row">
+                            <td>Érvényesített SZJA kedvezmény:</td>
+                            <td class="amount text-green" id="resSzjaDiscount">-0 Ft</td>
+                        </tr>
+                        <tr>
+                            <td>Fizetendő SZJA:</td>
+                            <td class="amount" id="resFinalSzja">0 Ft</td>
+                        </tr>
+                        <tr>
+                            <td>TB járulék (18.5%):</td>
+                            <td class="amount" id="resTb">0 Ft</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Nettó kézhez kapott bér:</strong></td>
+                            <td class="amount text-netto" id="resNetto"><strong>0 Ft</strong></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="chart-wrapper">
+                    <h3>Jövedelem eloszlása</h3>
+                    <div class="chart-box">
+                        <canvas id="taxChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
